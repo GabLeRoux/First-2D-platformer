@@ -44,9 +44,8 @@ public class InstatianteFruits : MonoBehaviour
         spawnFruitPosition[0] = firstValue;
         for (int i = 1; i < array_length; i++)
         {
-            float rng_PosX = Random.Range(3, 10);
-            //float rng_PosX = 1;
-            spawnFruitPosition[i] = spawnFruitPosition[i-1] + rng_PosX;
+            float rng_PosX = Random.Range(6, 10);
+             spawnFruitPosition[i] = spawnFruitPosition[i-1] + rng_PosX;
         }
     }
     private void FruitSpawn(int array_length, float FuitPosY)

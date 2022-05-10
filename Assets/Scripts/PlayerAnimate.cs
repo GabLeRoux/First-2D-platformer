@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class PlayerAnimate : MonoBehaviour
@@ -6,7 +5,7 @@ public class PlayerAnimate : MonoBehaviour
     MyPlayerInput player;
    
     //force to apply
-     private const float jumpForce = 9.30f;
+     private const float jumpForce = 9.50f;
      private const float speed = 10.00f;
     [Range(0, 0.3f)] [SerializeField] private float smooting = 0.05f;
     private Vector2 refVelo = Vector2.zero;
@@ -62,8 +61,8 @@ public class PlayerAnimate : MonoBehaviour
     //always updating the collision side if player jump
     private void WallJump()
     {
-        
-            colValue = collside ? WallCheck.position.x - 0.5f : WallCheck.position.x + 0.5f;
+        var side = collside ? WallCheck.position.x - 0.5f : WallCheck.position.x + 0.5f;
+        colValue = side;
     }
    private void AddJumpForce()
     {
@@ -80,25 +79,15 @@ public class PlayerAnimate : MonoBehaviour
         {
             AddJumpForce();
         }
-        //RaycastHit2D hit;
-        else if (!Physics2D.Raycast(transform.position, Vector3.down,2.60f,groundDef) && CanWallJump() && isJump && CanWallJump())
-        //else if (CanWallJump() && isJump && !isGround)
+        else if (CanWallJump() && isJump && !isGround)
         {
             wallJumpAnim = true;
             AddJumpForce();
             collside = !collside; //changer player side if jump on wall
             player.IsJuxmping = false;
         }
-        else if (Grounded())
-            collside = !collside;
-
-
     }
-
-   
-
-
-    public bool CanWallJump()
+    private bool CanWallJump()
     {
         Collider2D col = Physics2D.OverlapBox(new Vector2(colValue, WallCheck.position.y), new Vector2(0.6f, 0.2f), 0f, groundDef);
         return col != null;
@@ -110,22 +99,23 @@ public class PlayerAnimate : MonoBehaviour
     }
     private void OnDrawGizmosSelected()
     {
-        Debug.DrawRay(transform.position, Vector3.down * 2.60f);
-
-        //var isGround = Grounded();
+        var isGround = Grounded();
         var isWall = CanWallJump();
         Gizmos.color = isWall ? Color.yellow : Color.red;
-        //Gizmos.color = isGround ? Color.blue : Color.red;
+        Gizmos.color = isGround ? Color.blue : Color.red;
 
         Gizmos.DrawWireCube(new Vector2(colValue, WallCheck.position.y), new Vector3(0.6f, 0.2f, 0f));
-        //Gizmos.DrawWireCube(groundCheck.position, new Vector3(0.6f, 0.2f, 0f));
+        Gizmos.DrawWireCube(groundCheck.position, new Vector3(0.6f, 0.2f, 0f));
     }
 
     private void Mouvement(float m)
     {
-            rigid.velocity = Vector2.SmoothDamp(rigid.velocity, new Vector2(m * speed, rigid.velocity.y),
-                        ref refVelo, smooting);
-            rigid.AddForce(((Physics2D.gravity * 2.5f) - Physics2D.gravity));
+        // float  m  -- represent player input mouvement
+
+        rigid.velocity = Vector2.SmoothDamp(rigid.velocity, new Vector2(m * speed, rigid.velocity.y),
+                         ref refVelo, smooting);
+        rigid.AddForce (((Physics2D.gravity * 2.5f) - Physics2D.gravity));
+        
     }
 
     private void FixedUpdate()
@@ -133,6 +123,5 @@ public class PlayerAnimate : MonoBehaviour
         Grounded();
         WallJump();
         CanWallJump();
-
     }
 }

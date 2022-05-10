@@ -8,7 +8,7 @@ public class MyPlayerInput : MonoBehaviour
 {
 
     private GameManager manager;
-    private float horizontalInput; 
+    private Vector2 pos; 
     private bool isJumping = false;
     private Animator anim;
     private Rigidbody2D rigid;
@@ -29,7 +29,7 @@ public class MyPlayerInput : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
-        horizontalInput = context.ReadValue<Vector2>().normalized.x;
+        pos = context.ReadValue<Vector2>().normalized;
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -57,7 +57,7 @@ public class MyPlayerInput : MonoBehaviour
             anim.SetFloat("h", 0);
         
         else 
-            anim.SetFloat("h", Mathf.Abs(horizontalInput));
+            anim.SetFloat("h", Mathf.Abs(pos.x));
         
         if (isWallJump)
         {
@@ -71,10 +71,14 @@ public class MyPlayerInput : MonoBehaviour
         }
 
     }
+    private void WaitTimerWallJump()
+    {
+        anim.SetBool("WallJump", player.WallJumpAnim);
+    }
 
     private void FixedUpdate()
     {
-        player.PlayerOnMove(horizontalInput, isJumping);
+        player.PlayerOnMove(pos.x, isJumping);
     }
     private void Update()
     {

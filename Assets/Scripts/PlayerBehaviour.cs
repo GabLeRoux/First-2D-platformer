@@ -61,7 +61,60 @@ public class PlayerBehaviour : MonoBehaviour
         }
         Invoke("WaitForResetSmooth", 0.5f);
       
+        #region garbage comment
 
+        //if (collSide.x <= -0.1f && collSide.y <= 0f)
+        //{
+        //    rigid.AddForce(Vector2.right * -15, ForceMode2D.Impulse);
+        //}
+        //else if (collSide.x <= -0.1f && collSide.y >= 0f)
+        //{
+        //    rigid.AddForce(Vector2.right * -15, ForceMode2D.Impulse);
+        //}
+        //else if (collSide.x >= 0.1f && collSide.y <= -0.1f)
+        //{
+        //    rigid.AddForce(Vector2.right * 15, ForceMode2D.Impulse);
+        //}
+        //else if (collSide.x <= -0.1f && collSide.y >= 0.1f)
+        //{
+        //    rigid.AddForce(Vector2.right * 15, ForceMode2D.Impulse);
+        //}
+        //else if (collSide.x <= -0.4f && collSide.y >= 0.4f)
+        //{
+        //    rigid.AddForce(new Vector2(-8, 4), ForceMode2D.Impulse);
+        //}
+        //else
+        //{
+        //    rigid.AddForce(Vector2.right * 15, ForceMode2D.Impulse);
+        //}
+
+
+        //  }
+        // else if (collision.gameObject.CompareTag("Pic"))
+        //{
+        //    //player_Smooting.Smooting = 0.10f;
+        //    //rigid.velocity = Vector2.right;
+        //    if (collSide.x <= -0.1f && collSide.y >= 0.1f)
+        //    {
+        //        rigid.AddForce(Vector2.right * -10, ForceMode2D.Impulse);
+        //    }
+        //    else if (collSide.x >= 0.1f && collSide.y >= 0.1f)
+        //    {
+        //        rigid.AddForce(Vector2.right * 10, ForceMode2D.Impulse);
+        //    }
+
+        //    else
+        //    {
+        //        int randomRebond = Random.Range(0, 2);
+        //        print(randomRebond);
+        //        if (randomRebond == 0)
+        //            rigid.AddForce(new Vector2(4, 2) * 10, ForceMode2D.Impulse);
+        //        else
+        //            rigid.AddForce(new Vector2(-4, 2) * 10, ForceMode2D.Impulse);
+        //    }
+        //}
+        // }
+        #endregion
 
     }
     private void PlayerHit()

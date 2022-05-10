@@ -110,7 +110,6 @@ public class GameManager : MonoBehaviour
         var pointLost = Random.Range(100, 1000);
         actualPoint -= pointLost;
         tempPoint -= pointLost;
-       
     }
 
    
