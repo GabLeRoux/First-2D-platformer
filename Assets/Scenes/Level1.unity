@@ -107179,11 +107179,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Array_Fruits:
+  - {fileID: 647754224}
+  - {fileID: 1775054225}
   - {fileID: 848082123}
   - {fileID: 1787784145}
-  - {fileID: 1775054225}
   - {fileID: 788076852}
-  - {fileID: 647754224}
   oneFruitPosition:
   - {x: -198.13, y: 4.39, z: 0}
   - {x: -194.21, y: 6.38, z: 0}
