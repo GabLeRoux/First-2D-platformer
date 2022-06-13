@@ -6,11 +6,11 @@ public class InstatianteFruits : MonoBehaviour
 {
     //gameobject of type fruits
     [SerializeField] private GameObject[] Array_Fruits;
-
+    //private string[] FruitsNames() { return new  string[] { ("Apple", "Pineapple", "Cherries", "Melon", "Orange" }; }
+    
     [SerializeField] private Vector3[] oneFruitPosition;
     //spawn fruits vector3 range
     private float[] spawnFruitPosition;
-    
     [Header("Represent Size Array of the multipleFruits same element")]
     [SerializeField] private int[] NewFruitSpawn; 
     [Header("X represent First Fruit Pos , Y reprensent commun height, Z = 0")]
@@ -19,8 +19,9 @@ public class InstatianteFruits : MonoBehaviour
 
     void Start()
     {
+        OrderFruitArrayPriority();
         //only one fruit
-        if(oneFruitPosition.Length > 0)
+        if (oneFruitPosition.Length > 0)
         {
             foreach(var position in oneFruitPosition)
             {
@@ -36,6 +37,30 @@ public class InstatianteFruits : MonoBehaviour
                 StartPositionFruit(NewFruitSpawn[i], multipleFruits[i].x);
                 FruitSpawn(NewFruitSpawn[i], multipleFruits[i].y);
             }
+        }
+    }
+
+
+    private void OrderFruitArrayPriority()
+    {
+        string[] FruitsNamesOrder = new string[] { "Apple", "Pineapple", "Cherries", "Melon", "Orange" };
+
+        int count = 0;
+        int pos = 0;
+        while (count< FruitsNamesOrder.Length-1)
+        {
+            var fruit = Array_Fruits[pos];
+            if (fruit.name == FruitsNamesOrder[count])
+            {
+                var temp = Array_Fruits[count];
+                Array_Fruits[count] = fruit;
+                Array_Fruits[pos] = temp;
+
+                pos = 0;
+                count++;
+                continue;
+            }
+            pos++;
         }
     }
     private void StartPositionFruit(int array_length, float firstValue)
