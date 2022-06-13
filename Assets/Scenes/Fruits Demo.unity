@@ -2451,12 +2451,13 @@ MonoBehaviour:
   - {fileID: 1507713192}
   - {fileID: 501722679}
   oneFruitPosition:
-  - {x: -71.29, y: 6.2, z: 0}
-  - {x: -74.21, y: 9.91, z: 0}
-  - {x: -37.15, y: 4.92, z: 0}
+  - {x: -69.34, y: 3.86, z: 0}
+  - {x: -72.18, y: 6.66, z: 0}
+  - {x: -35.21, y: 5.89, z: 0}
+  - {x: -32.65, y: 6.74, z: 0}
   NewFruitSpawn: 04000000
   multipleFruits:
-  - {x: -68.2, y: 3.86, z: 0}
+  - {x: -68.49, y: 3.66, z: 0}
 --- !u!4 &968205029
 Transform:
   m_ObjectHideFlags: 0
@@ -2755,7 +2756,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2031832927}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -68.2, y: 3.86, z: 0}
+  m_LocalPosition: {x: -32.65, y: 6.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
